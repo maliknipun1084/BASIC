@@ -1,0 +1,82 @@
+IN SET THERE ARE UNIQUE ELEMENT . IT IS SAME AS MAP EXCEPT IT HAS ONLY KEYS. IMPLEMENTED USING RED BLACK TREE OR HASHMAPS .RANDOM ACCESS IS NOT POSSIBLE.INSTEAD OF LENGTH WE HAVE  BEGIN OR END 
+#include <iostream>
+#include <iterator>
+#include <set>
+The set::lower_bound() is a built-in function in C++ STL which returns an iterator pointing to the element in the container which is equivalent to k passed in the parameter. In case k is not present in the set container, the function returns an iterator pointing to the immediate next element which is just greater than k. If the key passed in the parameter exceeds the maximum value in the container, then the iterator returned points to the element beyond last element in the set container that is set.end(). 
+
+using namespace std;
+
+int main()
+{
+	// empty set container
+	set<int, greater<int> > s1;
+
+	// insert elements in random order
+	s1.insert(40);
+	s1.insert(30);
+	s1.insert(60);
+	s1.insert(20);
+	s1.insert(50);
+	
+	// only one 50 will be added to the set
+	s1.insert(50);
+	s1.insert(10);
+
+	// printing set s1
+	set<int, greater<int> >::iterator itr;
+	cout << "\nThe set s1 is : \n";
+	for (itr = s1.begin(); itr != s1.end(); itr++)
+	{
+		cout << *itr<<" ";
+	}
+	cout << endl;
+
+	// assigning the elements from s1 to s2
+	set<int> s2(s1.begin(), s1.end());
+
+	// print all elements of the set s2
+	cout << "\nThe set s2 after assign from s1 is : \n";
+	for (itr = s2.begin(); itr != s2.end(); itr++)
+	{
+		cout << *itr<<" ";
+	}
+	cout << endl;
+
+	// remove all elements up to 30 in s2
+	cout
+		<< "\ns2 after removal of elements less than 30 :\n";
+	s2.erase(s2.begin(), s2.find(30));
+	for (itr = s2.begin(); itr != s2.end(); itr++) {
+		cout <<*itr<<" ";
+	}
+
+	// remove element with value 50 in s2
+	int num;
+	num = s2.erase(50);
+	cout << "\ns2.erase(50) : ";
+	cout << num << " removed\n";
+	for (itr = s2.begin(); itr != s2.end(); itr++)
+	{
+		cout <<*itr<<" ";
+	}
+
+	cout << endl;
+
+	// lower bound and upper bound for set s1
+	cout << "s1.lower_bound(40) : \n"
+		<< *s1.lower_bound(40)
+		<< endl;
+	cout << "s1.upper_bound(40) : \n"
+		<< *s1.upper_bound(40)
+		<< endl;
+
+	// lower bound and upper bound for set s2
+	cout << "s2.lower_bound(40) :\n"
+		<< *s2.lower_bound(40)
+		<< endl;
+	cout << "s2.upper_bound(40) : \n"
+		<< *s2.upper_bound(40)
+		<< endl;
+
+	return 0;
+}
