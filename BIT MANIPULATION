@@ -1,0 +1,47 @@
+n & n-1 and n has same bit except 1st set bit 
+SUBSET OF SET
+for (int i=0 ; i<(1<<n) ; i++)
+for (int j=0;j<n;j) 
+if (i & (1<<j)){
+cout << arr[j] << endl;
+
+2. UNIQUE ELEMENT IN SET
+int xorsum=0;
+for(int i = 0; i < n; i++){
+    xorsum = xorsum ^ arr[i];
+}
+
+Let's dry run this for arr[] = {1, 2, 3, 4, 1, 2, 3}:
+what we can write:
+xorsum = 0 ^ 1;
+xorsum = 0 ^ 1 ^ 2;
+.
+.
+.
+xorsum = 0 ^ 1 ^ 2 ^ 3 ^ 4 ^ 1 ^ 2 ^ 3;
+By Commutative Property -
+xorsum = 0 ^ (1 ^ 1) ^ (2 ^ 2) ^ (3 ^ 3) ^ 4;
+xorsum = 0 ^ 0 ^ 0 ^ 0 ^ 4;
+xorsum = 4;
+and boom! That's the answer
+
+3. 2 unique element in set where all numbers
+except two, are present twice.
+
+
+
+
+Take XOR of all the elements and let that xor value be x. All the repeating
+elements will get nullified and xor of only two unique elements will last. (as
+a⊕a = 0).
+2. There will be at least one bit set in x. Using that set bit, divide the original
+set of numbers into two sets
+a. First set which contains all the elements with that bit set.
+b. Second set which contains all the elements with that bit unset.
+3. Take xor of both the sets individually, and let those xor values be x1 and x2.
+4. Voila, x1 and x2 are our unique numbers. Reason: both the above sets
+contain one of the unique elements and rest elements of the sets occur
+twice which will get nullified after ⊕ operation.
+
+
+
